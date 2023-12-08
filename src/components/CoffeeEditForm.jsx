@@ -2,15 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FormTemplate from './FormTemplate'
 
-export default function CoffeeForm(props) {
+export default function CoffeeEditForm(props) {
   return(
     <React.Fragment>
-      <FormTemplate formSubmitter={props.handleEditSubmit} buttonText={props.buttonText}/>
+      <FormTemplate formSubmitter={props.handleEditSubmit} buttonText="sell coffee"/>
     </React.Fragment>
   )
 }
 
 CoffeeForm.propTypes = {
-  handleFormSubmit: PropTypes.func,
-  buttonText: PropTypes.string
+  handleEditSubmit: PropTypes.func,
 }

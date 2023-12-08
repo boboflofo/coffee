@@ -1,16 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FormTemplate from './FormTemplate'
+import { v4 } from 'uuid';
 
 export default function CoffeeForm(props) {
+
+  function handleAddCoffeeSubmit(event) {
+    event.preventDefault();
+    props.addCoffee({
+      name: event.target.name.value, 
+      origin: event.target.origin.value, 
+      price: event.target.price.value, 
+      roast: event.target.roast.value,
+      pounds: 130,
+      id: v4()
+    });
+  }
   return(
     <React.Fragment>
-      <FormTemplate formSubmitter={props.handleFormSubmit} buttonText={props.buttonText}/>
+      <FormTemplate formSubmitter={handleAddCoffeeSubmit} buttonText="add coffee"/>
     </React.Fragment>
   )
 }
 
 CoffeeForm.propTypes = {
-  handleFormSubmit: PropTypes.func,
-  buttonText: PropTypes.string
+  addCoffee: PropTypes.func
 }
