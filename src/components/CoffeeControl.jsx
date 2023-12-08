@@ -17,6 +17,13 @@ export default class CoffeeControl extends React.Component{
     }
   }
 
+  changeShownCoffee = () => {
+    const shownCoffee = this.state.coffeeList.filter((coffee)=>coffee.id ===id);
+    this.setState({coffeeShown:shownCoffee})
+  }
+
+  add
+
   render() {
     let shownPage = null;
 
@@ -27,7 +34,7 @@ export default class CoffeeControl extends React.Component{
     } else if (this.state.coffeeShown != null) {
       shownPage = <CoffeeDetail />
     } else {
-      shownPage = <CoffeeList />
+      shownPage = <CoffeeList coffeeList = {this.state.coffeeList}/>
     }
     <React.Fragment>
       {shownPage}
