@@ -5,7 +5,7 @@ import FormTemplate from './FormTemplate'
 export default function CoffeeEditForm(props) {
   return(
     <React.Fragment>
-      <FormTemplate formSubmitter={props.handleEditSubmit} buttonText="sell coffee"/>
+      <FormTemplate formSubmitter={props.handleEditSubmit} buttonText="edit coffee"/>
     </React.Fragment>
   )
 }
