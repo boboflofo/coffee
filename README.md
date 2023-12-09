@@ -17,6 +17,8 @@
 ## Description
 Website that asks users for name, origin, price, and roast quality and updates the display based on that information. Users will be able to edit specific data, read, and create coffee instances for display.
 
+## Tree Diagram
+![Diagram](coffee_diagram.jpg)
 
 ## Setup/Installation Requirements
 
