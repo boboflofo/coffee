@@ -49,25 +49,54 @@ export default class CoffeeControl extends React.Component {
       }
       return coffee;
     });
-    this.setState({coffeeList:updatedCoffeeList})
+    this.setState({ coffeeList: updatedCoffeeList });
+  };
+
+  handleClick = () => {
+    if (this.state.shownCoffee != null) {
+      this.setState({
+        coffeeFormMode: false,
+        shownCoffee: null,
+        coffeeEditMode: false,
+      });
+    } else {
+      this.setState((prevState) => ({
+        coffeeFormMode: !prevState.coffeeFormMode,
+      }));
+    }
   };
 
   render() {
     let shownPage = null;
+    let buttonText = null;
 
     if (this.state.coffeeFormMode) {
-      shownPage = <CoffeeForm addCoffee={this.state.addCoffeeToList} />;
+      shownPage = <CoffeeForm addCoffee={addCoffeeToList} />;
+      buttonText = "Return to Coffee Display";
     } else if (this.state.coffeeEditMode) {
       shownPage = <CoffeeEditForm coffee={this.state.shownCoffee} />;
     } else if (this.state.coffeeShown != null) {
-      shownPage = <CoffeeDetail coffee = {this.state.shownCoffee} handleSell={this.state.sellCoffeeFromList} />;
+      shownPage = (
+        <CoffeeDetail
+          coffee={this.state.shownCoffee}
+          handleSell={this.state.sellCoffeeFromList}
+        />
+      );
     } else {
-      shownPage = <CoffeeList coffeeList={this.state.coffeeList} />;
+      buttonText = "Add Coffee to List";
+      shownPage = (
+        <CoffeeList
+          coffeeList={this.state.coffeeList}
+          changeShownCoffee={this.state.changeShownCoffee}
+        />
+      );
     }
 
-    return( 
-    <React.Fragment>{shownPage}</React.Fragment>
-    )
-   
+    return (
+      <React.Fragment>
+        {shownPage}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
   }
 }
