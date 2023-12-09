@@ -2,7 +2,6 @@ import React from "react";
 import CoffeeList from "./CoffeeList";
 import CoffeeDetail from "./CoffeeDetail";
 import CoffeeForm from "./CoffeeForm";
-import CoffeeEditForm from "./CoffeeEditForm";
 
 export default class CoffeeControl extends React.Component {
   constructor(props) {
