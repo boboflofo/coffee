@@ -18,7 +18,7 @@ export default class CoffeeControl extends React.Component {
   changeShownCoffee = (id) => {
     const shownCoffee = this.state.coffeeList.filter(
       (coffee) => coffee.id === id
-    );
+    )[0];
     this.setState({ coffeeShown: shownCoffee });
   };
 
@@ -53,11 +53,10 @@ export default class CoffeeControl extends React.Component {
   };
 
   handleClick = () => {
-    if (this.state.shownCoffee != null) {
+    if (this.state.coffeeShown != null) {
       this.setState({
         coffeeFormMode: false,
-        shownCoffee: null,
-        coffeeEditMode: false,
+        coffeeShown: null
       });
     } else {
       this.setState((prevState) => ({
@@ -70,24 +69,25 @@ export default class CoffeeControl extends React.Component {
     let shownPage = null;
     let buttonText = null;
 
-    if (this.state.coffeeFormMode) {
-      shownPage = <CoffeeForm addCoffee={addCoffeeToList} />;
-      buttonText = "Return to Coffee Display";
-    } else if (this.state.coffeeEditMode) {
-      shownPage = <CoffeeEditForm coffee={this.state.shownCoffee} />;
-    } else if (this.state.coffeeShown != null) {
+    if (this.state.coffeeShown != null) {
       shownPage = (
         <CoffeeDetail
-          coffee={this.state.shownCoffee}
-          handleSell={this.state.sellCoffeeFromList}
+          coffee={this.state.coffeeShown}
+          handleSell={this.sellCoffeeFromList}
         />
       );
-    } else {
+    }
+    else if (this.state.coffeeFormMode) {
+      shownPage = <CoffeeForm addCoffee={this.addCoffeeToList} />;
+      buttonText = "Return to Coffee Display";
+    // } else if (this.state.coffeeEditMode) {
+    //   shownPage = <CoffeeEditForm coffee={this.shownCoffee} />;
+    }  else {
       buttonText = "Add Coffee to List";
       shownPage = (
         <CoffeeList
           coffeeList={this.state.coffeeList}
-          changeShownCoffee={this.state.changeShownCoffee}
+          changeShownCoffee={this.changeShownCoffee}
         />
       );
     }

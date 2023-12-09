@@ -5,9 +5,10 @@ export default function Coffee(props) {
   return(
     <React.Fragment>
       <div onClick = {() => {props.showCoffee(props.id)}}>
-        <h1>{props.name}</h1>
-        <h3>${props.price} per pound</h3>
-        <h3>{props.pounds} pounds left</h3>
+        <h2>{props.name}</h2>
+        <div>${props.price} per pound</div>
+        <div>{props.pounds} pounds left</div>
+        <hr></hr>
       </div>
     </React.Fragment>
   )
