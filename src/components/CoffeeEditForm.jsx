@@ -10,6 +10,6 @@ export default function CoffeeEditForm(props) {
   )
 }
 
-CoffeeForm.propTypes = {
+CoffeeEditForm.propTypes = {
   handleEditSubmit: PropTypes.func,
 }

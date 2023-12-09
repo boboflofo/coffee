@@ -3,10 +3,10 @@ import Coffee from "./Coffee";
 import PropTypes from "prop-types";
 
 
-function CoffeeList(props){
+export default function CoffeeList(props){
   return (
     <React.Fragment>
-        {props.CoffeeList.map((coffee) =>
+        {props.coffeeList.map((coffee) =>
           <Coffee name={coffee.name}
             showCoffee = {props.changeShownCoffee}
             origin={coffee.origin}

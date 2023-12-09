@@ -60,10 +60,14 @@ export default class CoffeeControl extends React.Component {
     } else if (this.state.coffeeEditMode) {
       shownPage = <CoffeeEditForm coffee={this.state.shownCoffee} />;
     } else if (this.state.coffeeShown != null) {
-      shownPage = <CoffeeDetail handleSell={this.state.sellCoffeeFromList} />;
+      shownPage = <CoffeeDetail coffee = {this.state.shownCoffee} handleSell={this.state.sellCoffeeFromList} />;
     } else {
       shownPage = <CoffeeList coffeeList={this.state.coffeeList} />;
     }
-    <React.Fragment>{shownPage}</React.Fragment>;
+
+    return( 
+    <React.Fragment>{shownPage}</React.Fragment>
+    )
+   
   }
 }
